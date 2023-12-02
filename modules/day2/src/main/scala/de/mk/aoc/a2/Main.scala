@@ -1,7 +1,7 @@
 package de.mk.aoc.a2
 
 import cats.effect.{ExitCode, IO, IOApp}
-import cats.syntax.all.*
+import cats.syntax.all._
 import de.mk.util.Util
 import de.mk.aoc.a1.Main
 import de.mk.aoc.a1.Main.{Color, CubeSet, Game, parseLine}

@@ -1,7 +1,7 @@
 package de.mk.aoc.a1
 
 import cats.effect.{ExitCode, IO, IOApp}
-import cats.syntax.all.*
+import cats.syntax.all._
 import de.mk.util.Util
 
 import scala.annotation.tailrec

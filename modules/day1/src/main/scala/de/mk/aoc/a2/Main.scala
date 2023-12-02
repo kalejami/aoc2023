@@ -1,7 +1,7 @@
 package de.mk.aoc.a2
 
 import cats.effect.{ExitCode, IO, IOApp, Resource}
-import cats.syntax.all.*
+import cats.syntax.all._
 
 import scala.annotation.tailrec
 import scala.io.BufferedSource
