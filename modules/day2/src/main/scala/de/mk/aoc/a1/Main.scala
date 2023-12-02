@@ -36,7 +36,7 @@ object Main extends IOApp {
     }
   }
 
-  private def parseLine(s: String): Option[Game] = s.split(":").toList match {
+  def parseLine(s: String): Option[Game] = s.split(":").toList match {
     case ::(head, ::(next, _)) =>
       val gameNum = Try(head.replaceAll("Game ", "").trim.toInt).toOption
       val gameSets = next.split(";").toList.map { gameSetString =>
