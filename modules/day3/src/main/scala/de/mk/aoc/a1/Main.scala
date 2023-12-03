@@ -19,7 +19,6 @@ object Main extends IOApp {
 
   def checkLineForPartNumber(sc: Int, ec: Int)(l: String): Boolean = {
     val toCheck = l.substring(sc, ec)
-    println(toCheck)
     checkForPartNumber(toCheck)
   }
 
@@ -60,7 +59,6 @@ object Main extends IOApp {
       lineBelow: Option[String]
   ): List[Int] = {
     val r = """\d+""".r
-
     r.findAllMatchIn(line).toList.mapFilter { m =>
       val start = m.start
       val end = m.end
@@ -72,7 +70,6 @@ object Main extends IOApp {
         else if (lineAbove.exists(checkWithThisIndices)) numOpt
         else if (lineBelow.exists(checkWithThisIndices)) numOpt
         else None
-      println(result)
       result
     }
   }
