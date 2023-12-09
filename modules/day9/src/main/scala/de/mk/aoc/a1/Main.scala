@@ -17,6 +17,17 @@ object Main extends IOApp {
       }
     }
 
+    def previousValue: Long = {
+      val depths = interpolate(l, 1, List((0L, l)))
+      println(depths)
+      depths.foldLeft(0L) { case (acc, (_, distances)) =>
+        if (acc == 0L) distances.head
+        else {
+          distances.head - acc
+        }
+      }
+    }
+
     @tailrec
     private def interpolate(
         current: List[Long],
