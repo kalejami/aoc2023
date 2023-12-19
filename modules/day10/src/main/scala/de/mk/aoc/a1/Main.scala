@@ -4,7 +4,6 @@ import cats.effect.{ExitCode, IO, IOApp}
 import cats.syntax.all._
 import de.mk.util.Util
 
-import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Try
 
@@ -21,18 +20,15 @@ object Main extends IOApp {
   )(y: Int, x: Int): Iterable[(Int, Int)] = {
     val p = m(y)(x)
 
-    def updateGraph(y: Int, x: Int)(validMoves: List[Char]) = {
-      Try(m(y)(x)).toOption match {
-        case Some(next) =>
-          if (validMoves.contains(next.c) && next.visited == 0) {
-            val newNext = next.copy(visited = p.visited + 1)
-            m(y).update(x, newNext)
-            Some((y, x))
-          } else None
-        case None => None
-      }
+    def updateGraph(y: Int, x: Int)(validMoves: List[Char]) =
+      Try(m(y)(x)).toOption.flatMap { next =>
+        if (validMoves.contains(next.c) && next.visited == 0) {
+          val newNext = next.copy(visited = p.visited + 1)
+          m(y).update(x, newNext)
+          Some((y, x))
+        } else None
 
-    }
+      }
 
     updateGraph(y - 1, x)(norths) ++
       updateGraph(y + 1, x)(souths) ++
